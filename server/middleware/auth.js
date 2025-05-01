@@ -2,12 +2,15 @@ import jwt from "jsonwebtoken";
 import User from "../models/User.js";
 
 export const auth = async (req, res, next) => {
+  console.log("Token------>", req.cookies.token);
+  console.log("Token------>", token);
   try {
     const token =
       req.cookies.token ||
       (req.header("Authorization")
         ? req.header("Authorization").replace("Bearer ", "")
         : null);
+    console.log("Token2------>", token);
 
     if (!token) {
       return res.status(401).json({ message: "Authentication required" });
