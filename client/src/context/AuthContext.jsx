@@ -1,11 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
-import React, {
-  createContext,
-  useContext,
-  useState,
-  useEffect,
-  ReactNode,
-} from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 import { getCurrentUser, login, logout, register } from "../lib/api";
 
 const AuthContext = createContext(undefined);
