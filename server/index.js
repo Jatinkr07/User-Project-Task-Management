@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "http://localhost:3003",
+    origin: "https://user-project-task-management.onrender.com",
     credentials: true,
   })
 );
