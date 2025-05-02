@@ -14,6 +14,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(
   cors({
@@ -23,9 +24,12 @@ app.use(
     ],
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
+    allowedHeaders: ["Content-Type", "Authorization", "x-auth-token"],
+    exposedHeaders: ["Set-Cookie"],
   })
 );
+
+app.options("*", cors());
 
 connectDB();
 
@@ -34,7 +38,7 @@ app.use("/api/users", userRoutes);
 app.use("/api/projects", projectRoutes);
 
 app.use((err, req, res, next) => {
-  console.error(err.stack);
+  console.error("Error:", err.stack);
   res.status(err.status || 500).json({
     message: err.message || "Internal Server Error",
     errors: err.errors,
