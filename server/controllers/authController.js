@@ -30,10 +30,10 @@ export const registerUser = async (req, res, next) => {
     );
 
     res.cookie("token", token, {
-      httpOnly: true,
+      httpOnly: false,
       maxAge: 7 * 24 * 60 * 60 * 1000,
       sameSite: "none",
-      secure: true,
+      secure: false,
     });
 
     const userResponse = user.toObject();
@@ -69,10 +69,10 @@ export const loginUser = async (req, res, next) => {
     );
 
     res.cookie("token", token, {
-      httpOnly: true,
+      httpOnly: false,
       maxAge: 7 * 24 * 60 * 60 * 1000,
       sameSite: "none",
-      secure: true,
+      secure: false,
     });
 
     const userResponse = user.toObject();

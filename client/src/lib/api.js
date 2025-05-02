@@ -1,4 +1,4 @@
-const API_URL = 'https://user-project-task-management-v2.onrender.com/api';
+const API_URL = 'https://user-project-task-management-v2.onrender.com/';
 
 
 async function handleResponse(response) {
